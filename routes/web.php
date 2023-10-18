@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/webhook/onboarding', function (Request $request) {
+   dump($request->all());
+});
+
+

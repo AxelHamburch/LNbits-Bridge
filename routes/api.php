@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route heißt /api/counter
+Route::get('/counter', function () {
+    return view('welcome');
+});
+
+// Route heißt /api/balance
+Route::get('/balance', function () {
+    return view('welcome');
+});
