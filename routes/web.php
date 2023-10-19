@@ -20,11 +20,11 @@ Route::get('/', function () {
 });
 
 Route::post('/webhook/counter', function (Request $request) {
-    $lnurlw = $request->input('lnurlw');
+    $campaign = $request->input('body')['name'];
     $valuestore = Valuestore::make(config_path('counter.json'));
-    $value = $valuestore->get($lnurlw, 0);
+    $value = $valuestore->get($campaign, 0);
     $value++;
-    $valuestore->put($lnurlw, $value);
+    $valuestore->put($campaign, $value);
 
     return $value;
 });

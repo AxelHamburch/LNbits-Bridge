@@ -21,9 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route heißt /api/counter
-Route::get('/counter/{lnurlw}', function ($lnurlw) {
+Route::get('/counter/{campaign}', function ($campaign) {
     $valuestore = Valuestore::make(config_path('counter.json'));
-    $value = $valuestore->get($lnurlw, 0);
+    $value = $valuestore->get($campaign, 0);
 
     return [
         'counter' => $value,
