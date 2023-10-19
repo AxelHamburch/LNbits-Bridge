@@ -1,5 +1,6 @@
 <?php
 
+use App\Bitcoin\WalletAPIInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Spatie\Valuestore\Valuestore;
@@ -30,6 +31,6 @@ Route::get('/counter/{lnurlw}', function ($lnurlw) {
 });
 
 // Route heißt /api/balance
-Route::get('/balance', function () {
-    return view('welcome');
+Route::get('/balance', function (WalletAPIInterface $walletAPI) {
+    return $walletAPI->checkConnection();
 });
