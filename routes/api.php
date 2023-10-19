@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Spatie\Valuestore\Valuestore;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route heißt /api/counter
 Route::get('/counter', function () {
-    return view('welcome');
+    $valuestore = Valuestore::make(config_path('counter.json'));
+    $value = $valuestore->get('counter', 0);
+
+    return [
+        'counter' => $value,
+    ];
 });
 
 // Route heißt /api/balance

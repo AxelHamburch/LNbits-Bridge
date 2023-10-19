@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Valuestore\Valuestore;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,12 @@ Route::get('/', function () {
 });
 
 Route::post('/webhook/onboarding', function (Request $request) {
-   dump($request->all());
+    $valuestore = Valuestore::make(config_path('counter.json'));
+    $value = $valuestore->get('counter', 0);
+    $value++;
+    $valuestore->put('counter', $value);
+
+    return $value;
 });
 
 
