@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class LNBitsApiAdapter implements \App\Bitcoin\WalletAPIInterface
 {
-    public function checkConnection(): array
+    public function checkConnection(): array|null
     {
         $response = Http::lnbitsRead()
                         ->get('api/v1/wallet');
