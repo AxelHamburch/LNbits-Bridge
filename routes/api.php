@@ -34,3 +34,8 @@ Route::get('/counter/{campaign}', function ($campaign) {
 Route::get('/balance', function (WalletAPIInterface $walletAPI) {
     return $walletAPI->checkConnection();
 });
+
+// Route heißt /api/balance
+Route::get('/payments', function (WalletAPIInterface $walletAPI) {
+    return $walletAPI->getPayments();
+});
